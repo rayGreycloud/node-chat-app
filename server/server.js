@@ -16,12 +16,12 @@ io.on('connection', (socket) => {
 
   socket.emit('newMessage', {
     from: 'emperor@empire.net',
-    text: 'Hey, have you blown up Alderaan yet?',
+    text: 'Knock knock.',
     createdAt: 1234567890
   });
 
-  socket.on('createMessage', (newMessage) => {
-    console.log('createMessage', newMessage);
+  socket.on('createMessage', (message) => {
+    console.log('createMessage', message);
   });
 
   socket.on('disconnect', () => {
