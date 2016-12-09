@@ -10,13 +10,10 @@ socket.on('disconnect', function () {
 
 socket.on('newMessage', function (message) {
   console.log('newMessage', message);
-});
+  var li = jQuery('<li></li>');
+  li.text(`${message.from}: ${message.text}`);
 
-socket.emit('createMessage', {
-  from: 'Yoda',
-  text: 'Hello say I.'
-}, function (data) {
-  console.log('Message received.', data);
+  jQuery('#messages').append(li);
 });
 
 jQuery('#message-form').on('submit', function (e) {
@@ -26,6 +23,6 @@ jQuery('#message-form').on('submit', function (e) {
     from: 'User',
     text: jQuery('[name=message]').val()
   }, function () {
-    
+
   });
 });
